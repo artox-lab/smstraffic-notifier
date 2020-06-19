@@ -1,0 +1,29 @@
+{
+  "name": "artox-lab/smstraffic-notifier",
+  "type": "symfony-bridge",
+  "description": "Symfony SMS Line Notifier Bridge",
+  "keywords": ["sms", "smstraffic", "sms traffic", "sms-traffic", "notifier"],
+  "homepage": "https://artox.com",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Maxim Petrovich",
+      "email": "m.petrovich@artox.com"
+    }
+  ],
+  "require": {
+    "php": "^7.4",
+    "ext-json": "*",
+    "symfony/http-client": "^4.3|^5.0",
+    "symfony/notifier": "^5.0"
+  },
+  "autoload": {
+    "psr-4": { "ArtoxLab\\Component\\Notifier\\Bridge\\SmsTraffic\\": "" }
+  },
+  "minimum-stability": "dev",
+  "extra": {
+    "branch-alias": {
+      "dev-master": "5.2-dev"
+    }
+  }
+}
