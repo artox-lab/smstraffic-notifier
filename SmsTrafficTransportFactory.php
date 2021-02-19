@@ -35,21 +35,22 @@ class SmsTrafficTransportFactory extends AbstractTransportFactory
     public function create(Dsn $dsn): TransportInterface
     {
         $scheme   = $dsn->getScheme();
+
+        if ('smstraffic' !== $scheme) {
+            throw new UnsupportedSchemeException($dsn, 'smstraffic', $this->getSupportedSchemes());
+        }
+
         $login    = $this->getUser($dsn);
         $password = $this->getPassword($dsn);
         $from     = $dsn->getOption('from');
         $host     = 'default' === $dsn->getHost() ? null : $dsn->getHost();
         $port     = $dsn->getPort();
 
-        if ('smstraffic' === $scheme) {
-            $transport = new SmsTrafficTransport($login, $password, $from, $this->client, $this->dispatcher);
-            $transport->setHost($host);
-            $transport->setPort($port);
+        $transport = new SmsTrafficTransport($login, $password, $from, $this->client, $this->dispatcher);
+        $transport->setHost($host);
+        $transport->setPort($port);
 
-            return $transport;
-        }
-
-        throw new UnsupportedSchemeException($dsn, 'smstraffic', $this->getSupportedSchemes());
+        return $transport;
     }
 
 }

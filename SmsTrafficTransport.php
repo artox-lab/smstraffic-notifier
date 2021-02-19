@@ -9,6 +9,7 @@ namespace  ArtoxLab\Component\Notifier\Bridge\SmsTraffic;
 use Symfony\Component\Notifier\Exception\LogicException;
 use Symfony\Component\Notifier\Exception\TransportException;
 use Symfony\Component\Notifier\Message\MessageInterface;
+use Symfony\Component\Notifier\Message\SentMessage;
 use Symfony\Component\Notifier\Transport\AbstractTransport;
 use Symfony\Component\Notifier\Message\SmsMessage;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
@@ -68,9 +69,9 @@ class SmsTrafficTransport extends AbstractTransport
      *
      * @param MessageInterface $message Message
      *
-     * @return void
+     * @return SentMessage
      */
-    protected function doSend(MessageInterface $message): void
+    protected function doSend(MessageInterface $message): SentMessage
     {
         if (false === $message instanceof SmsMessage) {
             throw new LogicException(sprintf('The "%s" transport only supports instances of "%s" (instance of "%s" given).', __CLASS__, SmsMessage::class, get_debug_type($message)));
@@ -98,6 +99,8 @@ class SmsTrafficTransport extends AbstractTransport
                 $response
             );
         }
+
+        return new SentMessage($message, (string) $this);
     }
 
     /**
