@@ -12,18 +12,13 @@
     }
   ],
   "require": {
-    "php": "^7.4",
+    "php": ">=7.2",
     "ext-json": "*",
     "symfony/http-client": "^4.3|^5.0",
-    "symfony/notifier": "~5.2.0"
+    "symfony/notifier": "^5.2"
   },
   "autoload": {
     "psr-4": { "ArtoxLab\\Component\\Notifier\\Bridge\\SmsTraffic\\": "" }
   },
-  "minimum-stability": "dev",
-  "extra": {
-    "branch-alias": {
-      "dev-master": "5.2-dev"
-    }
-  }
+  "minimum-stability": "dev"
 }

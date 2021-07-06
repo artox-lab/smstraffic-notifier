@@ -25,21 +25,21 @@ class SmsTrafficTransport extends AbstractTransport
      *
      * @var string
      */
-    private string $login;
+    private $login;
 
     /**
      * Password
      *
      * @var string
      */
-    private string $password;
+    private $password;
 
     /**
      * Sender name
      *
      * @var string
      */
-    private string $from;
+    private $from;
 
     /**
      * SmsLineTransport constructor.
